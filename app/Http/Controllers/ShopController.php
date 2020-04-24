@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+    public function __contruct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
