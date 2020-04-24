@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/shops', 'ShopController@index')->name('shop.list');
+Route::get('/shops/{id}', 'ShopController@show')->name('shop.detail');
