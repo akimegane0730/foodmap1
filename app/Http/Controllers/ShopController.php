@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Shop;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -25,7 +26,9 @@ class ShopController extends Controller
      */
     public function create()
     {
-        //
+        $shop = new Shop;
+        $categories = Category::all()->pluck('name', 'id');
+        return view('new', ['shop' => $shop, 'categories' => $categories]);
     }
 
     /**
@@ -36,7 +39,12 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $shop = new Shop;
+        $shop->name = request('name');
+        $shop->address = request('address');
+        $shop->category_id = request('category_id');
+        $shop->save();
+        return redirect()->route('shop.detail', ['id' => $shop->id]);
     }
 
     /**
@@ -48,7 +56,7 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop = Shop::find($id); 
-        return view('show', ['show' => $shop]);
+        return view('show', ['shop' => $shop]);
     }
 
     /**
@@ -57,9 +65,11 @@ class ShopController extends Controller
      * @param  \App\Shop  $shop
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shop $shop)
+    public function edit($id)
     {
-        //
+        $shop = Shop::find($id);
+        $categories = Category::all()->pluck('name', 'id');
+        return view('edit', ['shop' => $shop, 'categories' => $categories]);
     }
 
     /**
@@ -69,9 +79,14 @@ class ShopController extends Controller
      * @param  \App\Shop  $shop
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shop $shop)
+    public function update(Request $request, $id, Shop $shop)
     {
-        //
+        $shop = Shop::find($id);
+        $shop->name = request('name');
+        $shop->address = request('address');
+        $shop->category_id = request('category_id');
+        $shop->save();
+        return redirect()->route('shop.detail', ['id' => $shop->id]);
     }
 
     /**
@@ -80,8 +95,10 @@ class ShopController extends Controller
      * @param  \App\Shop  $shop
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shop $shop)
+    public function destroy($id)
     {
-        //
+        $shop = Shop::find($id);
+        $shop->delete();
+        return redirect('/shops');
     }
 }
