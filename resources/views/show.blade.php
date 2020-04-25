@@ -3,8 +3,8 @@
 @section('content')
     <h1>{{ $shop->name }}</h1>
     <div>
-        <p>{{ $shop->category->name }}</p>
-        <p>{{ $shop->address }}</p>
+        <p class="category">カテゴリー：{{ $shop->category->name }}</p>
+        <p>住所：{{ $shop->address }}</p>
     </div>
 
     <iframe id='map' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyAHwA6lVZYOXuAddQ0WvfWoVLWw4FBvYhs&amp;q={{ $shop->address }}'
@@ -12,13 +12,22 @@
     height='320'
     frameborder='0'>
     </iframe>
+    <h2>おすすめの一品</h2>
     <div>
-        <a href={{ route('shop.list') }}>一覧に戻る</a>
-        |    <a href={{ route('shop.edit', ['id' =>  $shop->id]) }}>編集する</a>
-        <p></p>
-        {{ Form::open(['method' => 'delete', 'route' => ['shop.destroy', $shop->id]]) }}
-            {{ Form::submit('削除') }}
-        {{ Form::close() }}
+        <h1 class="item">{{ $shop->item }}</h1>
+        <p>理由:{{ $shop->reason }}</p>
+    </div>
+
+    <div>
+    @auth
+        @if ($shop->user_id === $login_user_id)
+            <a class='btn btn-success'href={{ route('shop.edit', ['id' =>  $shop->id]) }}>編集</a>
+            <p></p>
+            {{ Form::open(['method' => 'delete', 'route' => ['shop.destroy', $shop->id]]) }}
+                {{ Form::submit('削除', ['class' => 'btn btn-outline-danger']) }}
+            {{ Form::close() }}
+        @endif
+    @endauth
     </div>
 @endsection
 

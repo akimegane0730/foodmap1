@@ -32,6 +32,7 @@ class ShopController extends Controller
     {
         $shop = new Shop;
         $categories = Category::all()->pluck('name', 'id');
+        
         return view('new', ['shop' => $shop, 'categories' => $categories]);
     }
 
@@ -44,9 +45,14 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         $shop = new Shop;
+        $user = \Auth::user();
+
         $shop->name = request('name');
         $shop->address = request('address');
         $shop->category_id = request('category_id');
+        $shop->item = request('item');
+        $shop->reason = request('reason');
+        $shop->user_id = $user->id;
         $shop->save();
         return redirect()->route('shop.detail', ['id' => $shop->id]);
     }
@@ -60,7 +66,13 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop = Shop::find($id); 
-        return view('show', ['shop' => $shop]);
+        $user = \Auth::user();
+        if ($user) {
+            $login_user_id = $user->id;
+        } else {
+            $login_user_id = "";
+        }
+        return view('show', ['shop' => $shop, 'login_user_id' => $login_user_id]);
     }
 
     /**
