@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <h1>{{ $shop->name }}</h1>
+    <h1 class="title">{{ $shop->name }}</h1>
     <div>
         <p class="category">カテゴリー：{{ $shop->category->name }}</p>
         <p>住所：{{ $shop->address }}</p>
@@ -15,7 +15,8 @@
     <h2>おすすめの一品</h2>
     <div>
         <h1 class="item">{{ $shop->item }}</h1>
-        <p>理由:{{ $shop->reason }}</p>
+        <h3>理由</h3>
+        <h4> {{ $shop->reason }}</h4>
     </div>
 
     <div>
