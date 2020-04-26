@@ -16,10 +16,25 @@ class CategoriesTableSeeder extends Seeder
                 'name' => '和食',
             ],
             [
+                'name' => '洋食',
+            ],
+            [
                 'name' => '中華',
             ],
             [
                 'name' => 'イタリアン',
+            ],
+            [
+                'name' => '居酒屋',
+            ],
+            [
+                'name' => 'カフェ',
+            ],
+            [
+                'name' => 'ラーメン',
+            ],
+            [
+                'name' => 'その他',
             ],
 
         ]);
