@@ -5,6 +5,7 @@
     <div>
         <p class="category">カテゴリー：{{ $shop->category->name }}</p>
         <p>住所：{{ $shop->address }}</p>
+        <p>投稿者：{{ $shop->user->name }}</p>
     </div>
 
     <iframe id='map' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyAHwA6lVZYOXuAddQ0WvfWoVLWw4FBvYhs&amp;q={{ $shop->address }}'
@@ -12,11 +13,11 @@
     height='320'
     frameborder='0'>
     </iframe>
-    <h2>おすすめの一品</h2>
+    <h2>{{ $shop->user->name }} さんのおすすめの一品</h2>
     <div>
         <h1 class="item">{{ $shop->item }}</h1>
         <h3>理由</h3>
-        <h4> {{ $shop->reason }}</h4>
+        <div class="reason"> {{ $shop->reason }}</div>
     </div>
 
     <div>
@@ -29,6 +30,10 @@
             {{ Form::close() }}
         @endif
     @endauth
+    </div>
+    <p></p>
+    <div>
+        <a class='btn btn-info'href={{ route('shop.list') }}>一覧に戻る</a>
     </div>
 @endsection
 

@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+    <img class="logo" src="logo.png" alt="logo">
     <h1>お店一覧</h1>
 
     <table class='table table-striped table-hover'>
@@ -22,7 +23,7 @@
     </table>
     @auth
         <div>
-            <a href={{ route('shop.new') }} class="btn btn-outline-primary">新しいお店</a>
+            <a href={{ route('shop.new') }} class="btn btn-outline-primary">新しいお店を投稿</a>
         </div>
     @endauth
 @endsection

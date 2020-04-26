@@ -1,12 +1,29 @@
 @charset "utf-8";
 
 .category {
-  color: red;
+  color: blue;
 }
 .item {
   text-align: center;
-  
+  color: red;
 }
 .title {
+  text-align: center;
+}
+.logo {
+  width: 100%;
+}
+div.reason {
+  width: 100%;
+  font-size: 20px;
+  overflow-wrap: break-word;
+  color: rgb(12, 238, 181);
+}
+.contain {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.contain {
   text-align: center;
 }

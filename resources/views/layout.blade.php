@@ -61,5 +61,10 @@
         <div class='container'>
             @yield('content')
         </div>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="contain">
+        <span class="text-muted text-footer">© 2020 Akihiro, All rights reserved.</span>
+        </div>
+    </footer>
     </body>
 </html>
