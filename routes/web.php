@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/shops');
 });
+Route::get('/intro', function() {
+    return view('intro');
+});
+Route::get('/user/show{id}', 'UserController@show')->name('user.show');
 
 Route::get('/shops', 'ShopController@index')->name('shop.list');
 Route::get('/shops/new', 'ShopController@create')->name('shop.new');

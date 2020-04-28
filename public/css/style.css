@@ -27,3 +27,7 @@ div.reason {
 .contain {
   text-align: center;
 }
+h2.intro-text {
+  width: 100%;
+  overflow-wrap: break-word;
+}
