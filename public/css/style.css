@@ -11,7 +11,7 @@
   text-align: center;
 }
 .logo {
-  width: 100%;
+  max-width: 100%;
 }
 div.reason {
   width: 100%;
