@@ -11,7 +11,7 @@
 ### password:testtest  
 
 # 制作背景(意図)
-## 初めていくお店でどれがおすすめの一品かを知りたいときに実際にいったことのある人の生の声をキックことができればいいなと思ったから。
+## 初めていくお店でどれがおすすめの一品かを知りたいときに実際にいったことのある人の生の声を聞くことができればいいなと思ったから。
 
 
 # 工夫したポイント
@@ -20,4 +20,29 @@
 ## Laravel,HTML,CSS,Bootstrap,heroku  
 
 # 課題や今後実装したい機能
+## いいね機能, 画像投稿機能,  
+
 # DB設計
+
+## shopテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false|
+|address|string|null:false|
+|item|string|null:false|
+|reason|string|null:false|
+|user_id|integer|null:false|
+|category_id|integer|null:false|
+
+### Association
+- belongs_to :user
+- has_many :categories
+
+## categoryテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|nu;;:false|
+
+### Association
+- belongs_to :shop
