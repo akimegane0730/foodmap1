@@ -21,6 +21,8 @@
             </tr>
         @endforeach
     </table>
+
+    <p class="msg-log">お店を投稿するにはログインしてください</p>
     @auth
         <div>
             <a href={{ route('shop.new') }} class="btn btn-outline-primary">新しいお店を投稿</a>
